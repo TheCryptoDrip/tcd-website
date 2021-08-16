@@ -1,0 +1,5 @@
+@import 'tailwindcss/tailwind';
+
+@layer base {
+  @import './modules/fonts.css';
+}

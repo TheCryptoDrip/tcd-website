@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "sk-modernist";
+  src: url("/fonts/Sk-Modernist-Regular.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "sk-modernist-mono";
+  src: url("/fonts/Sk-Modernist-mono.otf");
+  font-style: medium;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "sk-modernist";
+  src: url("/fonts/Sk-Modernist-bold.otf");
+  font-style: medium;
+  font-weight: 700;
+  font-display: swap;
+}

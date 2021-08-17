@@ -10,7 +10,10 @@ export interface NamiApiResponse {
     client: string;
     dev: string;
   };
-  data?: any;
+  details?: {
+    address: string;
+    balance: number;
+  };
   cached?: boolean;
   status: number;
 }
@@ -51,14 +54,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const cacheKey = getUtxoCacheKey(address as string);
   if (Cache.has(cacheKey)) {
     return res.status(200).json({
-      data: Cache.get(cacheKey),
+      details: Cache.get(cacheKey),
       cached: true,
       status: 200
     });
   } else {
     Cache.set(cacheKey, address, CACHE_TTL);
     return res.status(200).json({
-      data: address,
+      details: {
+        address: address as string,
+        balance: 0
+      },
       cached: false,
       status: 200
     })

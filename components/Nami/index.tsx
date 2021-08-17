@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 
 import { useWalletData } from '../../lib/hooks/wallet';
 
-const WalletData = dynamic(() => import('./modules/WalletData'));
+const WalletData = dynamic(() => import('./WalletDetailsCard').then(mod => mod.WalletDetailsCard));
 
 export const NamiWalletCard = () => {
   const [wallet, isLoadingWallet] = useWalletData();

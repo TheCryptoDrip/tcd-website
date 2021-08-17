@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/client';
 import { NamiApiResponse } from '../../pages/api/wallet/nami';
 
-export const useWalletData = (force = false): [NamiApiResponse | [], boolean] => {
+export const useWalletData = (force = false): [NamiApiResponse | null, boolean] => {
   const [loadingWalletData, updateLoadingWalletData] = useState(false);
   const [walletData, updateWalletData] = useState<NamiApiResponse | null>(null);
   const [session, isLoading] = useSession();
@@ -16,7 +16,7 @@ export const useWalletData = (force = false): [NamiApiResponse | [], boolean] =>
         'address': address[0],
         'session': session.accessToken as string
       }
-    })).json() : [];
+    })).json() : null;
 
     updateWalletData(data);
     updateLoadingWalletData(false);

@@ -12,6 +12,7 @@ export interface NamiApiResponse {
   };
   data?: any;
   cached?: boolean;
+  status: number;
 }
 
 const CACHE_TTL = 24 * 60 * 60; // 1 day
@@ -32,7 +33,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       message: {
         client: 'You must be logged in to see this!',
         dev: 'You must pass a valid <accessToken> header with your request.',
-      }
+      },
+      status: 403
     });
   }
 
@@ -41,7 +43,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       message: {
         client: 'Something went wrong, contact support.',
         dev: 'You must pass an <address> header with your request.'
-      }
+      },
+      status: 400
     });
   }
 
@@ -49,13 +52,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   if (Cache.has(cacheKey)) {
     return res.status(200).json({
       data: Cache.get(cacheKey),
-      cached: true
+      cached: true,
+      status: 200
     });
   } else {
     Cache.set(cacheKey, address, CACHE_TTL);
     return res.status(200).json({
       data: address,
-      cached: false
+      cached: false,
+      status: 200
     })
   }
 

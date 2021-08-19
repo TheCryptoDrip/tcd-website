@@ -26,8 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/_app.tsx",
-    "tailwind.config.js",
-    "postcss.config.js"
+    "config/tailwind.config.js",
+    "config/postcss.config.js"
   ],
   "exclude": [
     "node_modules"

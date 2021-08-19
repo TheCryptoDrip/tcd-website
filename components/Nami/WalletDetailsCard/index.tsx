@@ -4,12 +4,12 @@ import cs from 'classnames';
 import { NamiApiResponse } from '../../../pages/api/wallet/nami';
 
 export interface WalletDetailsCardProps {
-  data: NamiApiResponse | null,
+  data?: NamiApiResponse | null,
   className?: string;
 }
 
 export const WalletDetailsCard: FC<WalletDetailsCardProps> = (props) => {
-  const { data, className, ...rest } = props;
+  const { data = null, className, ...rest } = props;
 
   if (!data) {
     return <p>Nothing to see here!</p>

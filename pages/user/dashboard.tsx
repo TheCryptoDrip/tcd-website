@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { signIn, signOut, useSession } from 'next-auth/client'
 
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import { NamiWalletCard } from '../../components/Nami';
 
 export default function Dashboard() {
